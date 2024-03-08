@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.RedStoneWireBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -94,24 +95,26 @@ public class GPistonBlock extends Block implements EntityBlock{
 
 			GPistonBlockEntity be=(GPistonBlockEntity)p_55667_.getBlockEntity(gPos);
 			
-			if(!be.getIsPowered() && isNeighborPowered) {
-				//System.out.println("Sono stato alimentato");
-				//Muovo i blocchi qui!!!!!
-				if(GPistonBlockEntity.blockNearMe(gPos, p_55667_,false)==null){//non deve stare un mio blocco che sta attivo vicino a me
-					System.out.println("acceso da :" + p_55670_);
-					be.changeState(true, p_55667_,p_55668_,true);
-					p_55667_.playSound(null, gPos, SoundEvents.PISTON_EXTEND, SoundSource.BLOCKS, 1.0f, 1.0f);
-				}
+			if(p_55667_.getBlockState(p_55670_).getBlock() instanceof RedStoneWireBlock){//turn on only if powered by redstone wire
+			
+				if(!be.getIsPowered() && isNeighborPowered) {
+					//System.out.println("Sono stato alimentato");
+					//Muovo i blocchi qui!!!!!
+					if(GPistonBlockEntity.blockNearMe(gPos, p_55667_,false)==null){//non deve stare un mio blocco che sta attivo vicino a me
+						System.out.println("acceso da :" + p_55670_);
+						be.changeState(true, p_55667_,p_55668_,true);
+						p_55667_.playSound(null, gPos, SoundEvents.PISTON_EXTEND, SoundSource.BLOCKS, 1.0f, 1.0f);
+					}
 				
-			}
-			else if (be.getIsPowered() && !isNeighborPowered && p_55670_.getY()+1!=gPos.getY() && p_55670_.getY()-1!=gPos.getY()){
-				//System.out.println("Sono stato spento");
-				//Rimetto a posto i blocchi qui!!!!
-				//if(GPistonBlockEntity.blockNearMe(gPos, p_55667_,false)==null){
+				}
+				else if (be.getIsPowered() && !isNeighborPowered){
+					//System.out.println("Sono stato spento");
+					//Rimetto a posto i blocchi qui!!!!
 					System.out.println("spento da :" + p_55670_);
 					be.changeState(false, p_55667_,p_55668_,false);
 					p_55667_.playSound(null, gPos, SoundEvents.PISTON_CONTRACT, SoundSource.BLOCKS, 1.0f, 1.0f);
-				//}
+				
+				}
 			}
 	    }
 	}
