@@ -1,7 +1,7 @@
 package com.example.examplemod.block.custom;
 
 public enum Directions {
-    ABOVE, //Y+
+	ABOVE, //Y+
 	BELOW, //Y-
 	NORTH, //Z-
 	SOUTH, //Z+
