@@ -36,7 +36,7 @@ Insted with the button (left,right,above,below) you can choice the input directi
 ### <a name="power_supply"> Power supply and other function</a>
 When you try to turn on the block with redstone or another signal block.
 > [!WARNING]
-> You can only feed it from the side, if you try another way the result is unexpected
+> You can only feed it directly with redstone wire, if you try another way the result is unexpected
 
 Don't be discouraged by this limitation because if you have multiple gPiston blocks nearly, turning on one will cause the blocks near the lit block to light up.
 
@@ -47,3 +47,6 @@ Don't be discouraged by this limitation because if you have multiple gPiston blo
 During the development of this mod i discovered that a mod identical to the one i wanted to create already existed, me after discover that:
 
 <img src="https://github.com/L-amichevoleprogrammatorediquartiere/GPiston-Minecraft-Mod/assets/64810680/44ede74a-a737-4ef2-90e9-62ba3d3b3ae5" width="300" height="300">
+
+>[!NOTE]
+> If I feel like it, I will implement the fact that the blocks come out a little at a time hence the ticking
